@@ -1,0 +1,34 @@
+#############################################################################
+###Simulando procesos AR(1) y MA(1)
+
+### AR(1)
+par(mfrow= c(1,2))
+arsim1 <- arima.sim(list(order = c(1,0,0), ar = 0.7), n = 100)
+plot(arsim1, col=1)
+
+arsim2 <- arima.sim(list(order = c(1,0,0), ar = -0.7), n = 100)
+plot(arsim2, col=2)
+
+arsim3 <- arima.sim(list(order = c(1,0,0), ar = 0.35), n = 200)
+plot(arsim3, col=3)
+
+arsim4 <- arima.sim(list(order = c(1,0,0), ar = -0.35), n = 200)
+plot(arsim4, col=4)
+
+### MA(1)
+par(mfrow= c(1,2))
+masim5 <- arima.sim(list(order = c(0,0,1), ma = 0.7), n = 100)
+plot(masim5, col=1)
+
+masim6 <- arima.sim(list(order = c(0,0,1), ma = -0.7), n = 100)
+plot(masim6, col=2)
+
+masim7 <- arima.sim(list(order = c(0,0,1), ma = 0.35), n = 200)
+ts.plot(masim7, col=3)
+
+masim8 <- arima.sim(list(order = c(0,0,1), ma = -0.35), n = 200)
+ts.plot(masim8, col=4)
+
+
+adf.test(arsim1)
+kpss.test(arsim1)
